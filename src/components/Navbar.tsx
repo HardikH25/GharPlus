@@ -20,14 +20,13 @@ export default function Navbar() {
       className="fixed inset-x-0 top-0 z-50 py-3 px-3 md:py-4"
     >
       <nav className="mx-auto flex h-14 md:h-16 w-full max-w-6xl items-center justify-between rounded-2xl glass-card px-4 md:px-8 shadow-glass">
-        <NavLink to="/" className="tracking-tight relative group" onClick={() => setMobileOpen(false)}>
-          <p className="text-lg md:text-xl font-heading font-bold text-zinc-50 tracking-wide text-gradient">Ghar+</p>
-          <motion.div
-            className="absolute -bottom-1 left-0 h-[2px] bg-accent-primary"
-            initial={{ width: 0 }}
-            whileHover={{ width: "100%" }}
-            transition={{ duration: 0.3 }}
-          />
+        <NavLink to="/" className="group flex items-center gap-0 tracking-tighter" onClick={() => setMobileOpen(false)}>
+          <span className="text-xl md:text-2xl font-heading font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400 transition-all duration-300 group-hover:from-white group-hover:to-zinc-200">
+            Ghar
+          </span>
+          <span className="text-xl md:text-2xl font-heading font-black text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.4)] transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(52,211,153,0.8)] group-hover:scale-110">
+            +
+          </span>
         </NavLink>
 
         {/* Desktop Nav */}
