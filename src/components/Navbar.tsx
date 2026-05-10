@@ -20,12 +20,18 @@ export default function Navbar() {
       className="absolute inset-x-0 top-0 z-50 py-4 px-6 md:py-6 md:px-12"
     >
       <nav className="mx-auto flex w-full max-w-[1400px] items-center justify-between">
-        <Link to="/" className="flex flex-col items-center justify-center gap-0 tracking-tighter" onClick={() => setMobileOpen(false)}>
-          <span className="text-2xl md:text-3xl font-heading font-normal text-[#2A3B32] uppercase tracking-widest relative">
-            GHAR<sup className="text-sm absolute top-1 -right-3">+</sup>
-          </span>
-          <span className="text-[0.45rem] tracking-[0.2em] uppercase text-[#2A3B32] mt-1 text-center font-medium w-full whitespace-nowrap">
-            | APNAPAN DUSRE SEHER ME |
+        <Link to="/" onClick={() => setMobileOpen(false)} className="flex flex-col items-center gap-0">
+          <img
+            src="/logo2.png"
+            alt="Ghar+ Logo"
+            className="h-12 md:h-14 lg:h-16 w-auto object-contain"
+            style={{
+              filter:
+                "brightness(0) saturate(100%) invert(22%) sepia(15%) saturate(800%) hue-rotate(100deg) brightness(85%)",
+            }}
+          />
+          <span className="text-[0.50rem] tracking-[0.2em] uppercase text-[#4A5D50] font-medium whitespace-nowrap -mt-0.5">
+            | Apnapan Dusre Seher Me |
           </span>
         </Link>
 
@@ -44,7 +50,7 @@ export default function Navbar() {
 
         {/* Hamburger */}
         <div className="flex items-center justify-end lg:hidden">
-           <button
+          <button
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
             className="relative z-50 p-2 text-[#2A3B32] hover:text-black transition-colors"
