@@ -70,16 +70,16 @@ export default function PropertiesPage() {
   }, [activeFilter, properties]);
 
   return (
-    <div className="mx-auto max-w-6xl space-y-8 md:space-y-12 pb-16 pt-4 md:pt-8">
+    <div className="mx-auto max-w-6xl space-y-8 md:space-y-12 pb-16 pt-28 md:pt-36 px-4 md:px-8">
       <div className="flex flex-col gap-4 md:gap-6 md:flex-row md:items-end md:justify-between">
         <div className="space-y-1 md:space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-primary">Premium Collection</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#4A5D50]">Premium Collection</p>
           <AnimatedText
             text="Explore Properties"
-            className="text-3xl md:text-4xl font-heading font-bold tracking-tight text-zinc-50 lg:text-5xl"
+            className="text-3xl md:text-4xl font-heading font-bold tracking-tight text-[#2A3B32] lg:text-5xl"
           />
         </div>
-        <div className="flex gap-2 overflow-x-auto scrollbar-hide rounded-2xl glass-card p-1.5 shadow-glass -mx-1 px-1">
+        <div className="flex gap-2 overflow-x-auto scrollbar-hide rounded-2xl bg-white/50 backdrop-blur-md p-1.5 shadow-sm border border-black/5 -mx-1 px-1">
           {filters.map((filter) => (
             <button
               type="button"
@@ -87,8 +87,8 @@ export default function PropertiesPage() {
               onClick={() => setActiveFilter(filter)}
               className={`whitespace-nowrap rounded-xl px-4 md:px-5 py-2 text-sm font-semibold transition-all duration-300 ${
                 activeFilter === filter
-                  ? "bg-accent-primary text-zinc-950 shadow-glow"
-                  : "text-zinc-400 hover:text-zinc-100 hover:bg-glass-border"
+                  ? "bg-[#688A71] text-white shadow-md"
+                  : "text-[#4A5D50] hover:text-[#2A3B32] hover:bg-white/40"
               }`}
             >
               {filter}
@@ -98,8 +98,8 @@ export default function PropertiesPage() {
       </div>
 
       {isLoading && (
-        <div className="flex min-h-64 items-center justify-center rounded-3xl glass-card border-dashed border-2 border-glass-border">
-          <LoaderCircle className="h-10 w-10 animate-spin text-accent-primary" />
+        <div className="flex min-h-64 items-center justify-center rounded-3xl bg-white shadow-sm border-dashed border-2 border-black/10">
+          <LoaderCircle className="h-10 w-10 animate-spin text-[#688A71]" />
         </div>
       )}
 
@@ -122,10 +122,10 @@ export default function PropertiesPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-3xl glass-card p-8 md:p-12 text-center max-w-xl mx-auto border-dashed border-2 border-glass-border"
+          className="rounded-3xl bg-white shadow-sm p-8 md:p-12 text-center max-w-xl mx-auto border-dashed border-2 border-black/10"
         >
-          <p className="text-lg md:text-xl font-heading font-semibold text-zinc-100">No matching properties found.</p>
-          <p className="mt-3 text-sm md:text-base text-zinc-400">
+          <p className="text-lg md:text-xl font-heading font-semibold text-[#2A3B32]">No matching properties found.</p>
+          <p className="mt-3 text-sm md:text-base text-[#4A5D50]">
             We are constantly adding new premium properties. Adjust your filters or reach out directly to check our unlisted inventory.
           </p>
         </motion.div>

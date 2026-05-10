@@ -1,12 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Home, LayoutGrid, Menu, Sparkles, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const navItems = [
-  { to: "/", label: "Home", icon: Home },
-  { to: "/properties", label: "Properties", icon: LayoutGrid },
-  { to: "/services", label: "Services", icon: Sparkles },
+  { to: "/", label: "Home" },
+  { to: "/properties", label: "Properties" },
+  { to: "/services", label: "Services" },
 ];
 
 export default function Navbar() {
@@ -17,58 +17,42 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
-      className="fixed inset-x-0 top-0 z-50 py-3 px-3 md:py-4"
+      className="absolute inset-x-0 top-0 z-50 py-4 px-6 md:py-6 md:px-12"
     >
-      <nav className="mx-auto flex h-14 md:h-16 w-full max-w-6xl items-center justify-between rounded-2xl glass-card px-4 md:px-8 shadow-glass">
-        <NavLink to="/" className="group flex items-center gap-0 tracking-tighter" onClick={() => setMobileOpen(false)}>
-          <span className="text-xl md:text-2xl font-heading font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400 transition-all duration-300 group-hover:from-white group-hover:to-zinc-200">
-            Ghar
+      <nav className="mx-auto flex w-full max-w-[1400px] items-center justify-between">
+        <Link to="/" className="flex flex-col items-center justify-center gap-0 tracking-tighter" onClick={() => setMobileOpen(false)}>
+          <span className="text-2xl md:text-3xl font-heading font-normal text-[#2A3B32] uppercase tracking-widest relative">
+            GHAR<sup className="text-sm absolute top-1 -right-3">+</sup>
           </span>
-          <span className="text-xl md:text-2xl font-heading font-black text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.4)] transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(52,211,153,0.8)] group-hover:scale-110">
-            +
+          <span className="text-[0.45rem] tracking-[0.2em] uppercase text-[#2A3B32] mt-1 text-center font-medium w-full whitespace-nowrap">
+            | APNAPAN DUSRE SEHER ME |
           </span>
-        </NavLink>
+        </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden sm:flex items-center gap-1 sm:gap-2">
+        <div className="hidden lg:flex items-center gap-6">
           {navItems.map((item) => (
             <NavLink
-              key={item.to}
+              key={item.label}
               to={item.to}
-              className={({ isActive }) =>
-                `relative flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-medium transition-all ${
-                  isActive
-                    ? "text-zinc-50"
-                    : "text-zinc-400 hover:text-zinc-100"
-                }`
-              }
+              className="text-sm font-medium text-[#2A3B32] hover:text-black transition-colors"
             >
-              {({ isActive }) => (
-                <>
-                  {isActive && (
-                    <motion.div
-                      layoutId="active-nav"
-                      className="absolute inset-0 rounded-xl bg-glass-border shadow-inner"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                  <item.icon size={16} className="relative z-10" />
-                  <span className="relative z-10">{item.label}</span>
-                </>
-              )}
+              {item.label}
             </NavLink>
           ))}
         </div>
 
-        {/* Mobile Hamburger */}
-        <button
-          type="button"
-          onClick={() => setMobileOpen((prev) => !prev)}
-          className="sm:hidden relative z-50 rounded-xl p-2 text-zinc-300 hover:text-zinc-50 transition-colors"
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        {/* Hamburger */}
+        <div className="flex items-center justify-end lg:hidden">
+           <button
+            type="button"
+            onClick={() => setMobileOpen((prev) => !prev)}
+            className="relative z-50 p-2 text-[#2A3B32] hover:text-black transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Dropdown */}
@@ -79,22 +63,15 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="sm:hidden mx-auto mt-2 max-w-5xl rounded-2xl glass-card border border-glass-border bg-zinc-950/95 backdrop-blur-2xl p-3 shadow-glass"
+            className="lg:hidden absolute top-full left-4 right-4 mt-2 rounded-2xl bg-[#E8EDE5]/95 backdrop-blur-xl border border-[#2A3B32]/10 p-4 shadow-xl"
           >
             {navItems.map((item) => (
               <NavLink
-                key={item.to}
+                key={item.label}
                 to={item.to}
                 onClick={() => setMobileOpen(false)}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all ${
-                    isActive
-                      ? "bg-accent-primary/10 text-emerald-300"
-                      : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900"
-                  }`
-                }
+                className="block w-full rounded-xl px-4 py-3 text-base font-medium text-[#2A3B32] hover:bg-[#2A3B32]/5 transition-colors"
               >
-                <item.icon size={18} />
                 {item.label}
               </NavLink>
             ))}

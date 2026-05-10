@@ -4,11 +4,11 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
   
   body {
-    @apply bg-premium-bg text-zinc-50 font-sans antialiased overflow-x-hidden;
+    @apply bg-[#E8EDE5] text-[#2A3B32] font-sans antialiased overflow-x-hidden;
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: 100%;
   }
@@ -19,18 +19,6 @@
 }
 
 @layer utilities {
-  .glass-card {
-    @apply bg-glass-bg backdrop-blur-xl border border-glass-border shadow-glass hover:shadow-glass-hover transition-all duration-300;
-  }
-  
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-500;
-  }
-
-  .text-gradient-accent {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-primary to-emerald-300;
-  }
-  
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
@@ -48,6 +36,6 @@
 
 /* Custom Selection */
 ::selection {
-  @apply bg-accent-primary/30 text-emerald-100;
+  background-color: rgba(104, 138, 113, 0.3);
+  color: #2A3B32;
 }
-

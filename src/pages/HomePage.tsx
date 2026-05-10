@@ -1,178 +1,141 @@
 import { motion } from "framer-motion";
-import {
-  BadgeCheck,
-  CircleDollarSign,
-  HeartHandshake,
-  MessageCircleMore,
-  ShieldCheck,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, DollarSign, Heart, MessageCircle, ShieldCheck, Tag } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getWhatsAppLink } from "../lib/whatsapp";
 
-const valueProps = [
-  {
-    title: "Verified Listings",
-    description: "Every property is verified with photos, amenities, and neighborhood checks.",
-    icon: BadgeCheck,
-  },
-  {
-    title: "Zero Brokerage",
-    description: "No hidden brokerage cuts. Clear pricing and transparent support.",
-    icon: CircleDollarSign,
-  },
-  {
-    title: "Student First",
-    description: "Flexible plans and daily essentials designed around student routines.",
-    icon: HeartHandshake,
-  },
-  {
-    title: "Instant WhatsApp Support",
-    description: "Get pricing, room availability, and onboarding help directly on WhatsApp without any waiting.",
-    icon: MessageCircleMore,
-  },
-];
-
 export default function HomePage() {
   return (
-    <div className="mx-auto max-w-6xl space-y-10 md:space-y-16 pb-10">
-      <section className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-zinc-800 bg-zinc-900 p-5 md:p-10">
-        <motion.div
-          aria-hidden="true"
-          initial={{ x: -30, y: -20, scale: 1 }}
-          animate={{ x: 20, y: 10, scale: 1.08 }}
-          transition={{ duration: 14, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-          className="pointer-events-none absolute -left-24 -top-20 h-48 w-48 md:h-72 md:w-72 rounded-full bg-emerald-400/10 blur-3xl"
-        />
-        <motion.div
-          aria-hidden="true"
-          initial={{ x: 30, y: 20, scale: 1 }}
-          animate={{ x: -20, y: -10, scale: 1.06 }}
-          transition={{ duration: 16, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-          className="pointer-events-none absolute -bottom-24 right-10 h-56 w-56 md:h-80 md:w-80 rounded-full bg-cyan-400/10 blur-3xl"
-        />
-        <motion.div
-          aria-hidden="true"
-          initial={{ opacity: 0.2 }}
-          animate={{ opacity: 0.35 }}
-          transition={{ duration: 6, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-          className="pointer-events-none absolute left-1/3 top-1/2 h-40 w-40 -translate-y-1/2 rounded-full bg-emerald-300/10 blur-2xl"
-        />
-        <div className="relative grid items-center gap-6 md:gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
-            className="space-y-4 md:space-y-6"
-          >
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[10px] md:text-xs uppercase tracking-[0.16em] text-emerald-300">
-              <Sparkles size={12} /> Premium Student Housing
-            </div>
+    <div className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden bg-[#E8EDE5]">
+      
+      {/* Background spheres (animated) */}
+      <motion.div 
+        animate={{ y: [0, -30, 0] }} 
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[15%] left-[45%] w-24 h-24 rounded-full bg-gradient-to-br from-white/80 to-[#A5C0AD]/50 shadow-xl backdrop-blur-sm z-0 blur-[1px]"
+      />
+      <motion.div 
+        animate={{ y: [0, 40, 0] }} 
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-1/4 right-[5%] w-40 h-40 rounded-full bg-gradient-to-tr from-[#688A71]/20 to-[#92B49D]/50 shadow-2xl backdrop-blur-sm z-0"
+      />
+      <motion.div 
+        animate={{ y: [0, -20, 0], x: [0, 15, 0] }} 
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute top-1/2 right-[45%] w-16 h-16 rounded-full bg-[#F4F7F2] shadow-[inset_0_-4px_6px_rgba(0,0,0,0.1),_0_8px_16px_rgba(0,0,0,0.1)] z-0"
+      />
 
-            <h1 className="max-w-2xl text-3xl md:text-4xl lg:text-6xl font-semibold leading-tight tracking-tight text-zinc-50">
-              Move into your next city with confidence.
-            </h1>
+      <div className="w-full max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10 px-6 md:px-12">
+        
+        {/* Left Content */}
+        <div className="space-y-8 max-w-xl z-10">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#DCE5DB] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#2A3B32]">
+            <ShieldCheck size={14} /> Premium Student Housing
+          </div>
 
-            <p className="max-w-xl text-sm md:text-base leading-relaxed text-zinc-300">
-              Ghar+ helps students find verified hostels with fast support and zero brokerage.
-              Browse stays in one place and inquire instantly on WhatsApp.
-            </p>
+          <h1 className="text-[2.75rem] md:text-6xl lg:text-[5rem] font-bold leading-[1.08] tracking-tight text-[#2A3B32]">
+            Move into your next city with confidence.
+          </h1>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <motion.div whileHover={{ scale: 1.02 }} className="w-full sm:w-auto">
-                <Link
-                  to="/properties"
-                  className="inline-flex w-full sm:w-auto justify-center rounded-xl bg-emerald-400 px-5 py-3 md:py-2.5 text-sm font-semibold text-zinc-950"
-                >
-                  Explore Properties
-                </Link>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.02 }} className="w-full sm:w-auto">
-                <a
-                  href={getWhatsAppLink("Hi Ghar+, I need help finding a premium hostel.")}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-950 px-5 py-3 md:py-2.5 text-sm font-medium text-zinc-200"
-                >
-                  <MessageCircleMore size={16} />
-                  Inquire on WhatsApp
-                </a>
-              </motion.div>
-            </div>
-          </motion.div>
+          <p className="text-lg md:text-xl text-[#4A5D50] leading-relaxed">
+            Verified hostels with zero brokerage. Browse stays here and inquire instantly via WhatsApp.
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.08 }}
-            className="space-y-4"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80"
-              alt="Premium Student Apartment"
-              className="h-[220px] sm:h-[300px] md:h-[380px] w-full rounded-2xl border border-zinc-800 object-cover"
-            />
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-3 md:p-4">
-              <div className="flex items-center gap-3">
-                <div className="rounded-full bg-emerald-400/15 p-2 text-emerald-300">
-                  <ShieldCheck size={16} />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-zinc-100">100% Verified Listings</p>
-                  <p className="text-xs text-zinc-400">Quality checks before publishing</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-4">
-        {valueProps.map((item, idx) => (
-          <motion.article
-            key={item.title}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.25, delay: idx * 0.05 }}
-            className="rounded-xl md:rounded-2xl border border-zinc-800 bg-zinc-900 p-4 md:p-5"
-          >
-            <item.icon className="text-emerald-400" size={18} />
-            <h3 className="mt-3 md:mt-4 text-sm md:text-lg font-semibold tracking-tight text-zinc-50">{item.title}</h3>
-            <p className="mt-1 md:mt-2 text-xs md:text-sm leading-relaxed text-zinc-400">{item.description}</p>
-          </motion.article>
-        ))}
-      </section>
-
-      <section className="mx-auto max-w-6xl grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5 md:p-6">
-          <p className="text-xs uppercase tracking-[0.2em] text-zinc-400">How it works</p>
-          <h2 className="mt-2 text-xl md:text-2xl font-semibold tracking-tight text-zinc-50">
-            Faster search, smoother move-in.
-          </h2>
-          <div className="mt-4 md:mt-5 grid gap-2 md:gap-3 text-sm text-zinc-300">
-            <p className="rounded-xl border border-zinc-800 bg-zinc-950 px-3 md:px-4 py-3">1. Browse verified properties on the listing page.</p>
-            <p className="rounded-xl border border-zinc-800 bg-zinc-950 px-3 md:px-4 py-3">2. Open WhatsApp and ask for pricing and availability.</p>
-            <p className="rounded-xl border border-zinc-800 bg-zinc-950 px-3 md:px-4 py-3">3. Finalize your stay with support from Ghar+.</p>
+          <div className="flex flex-col sm:flex-row gap-8 pt-4">
+            <Link
+              to="/properties"
+              className="group flex items-center gap-2 text-base font-semibold text-[#2A3B32] hover:text-black transition-colors"
+            >
+              Explore Properties 
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+            
+            <a
+              href={getWhatsAppLink("Hi Ghar+, I need help finding a premium hostel.")}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex items-center gap-2 text-base font-semibold text-[#2A3B32] hover:text-black transition-colors"
+            >
+              Inquire via WhatsApp
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </a>
           </div>
         </div>
 
-        <div className="rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-900 to-zinc-950 p-5 md:p-6">
-          <p className="text-xs uppercase tracking-[0.2em] text-zinc-400">Need help now?</p>
-          <h3 className="mt-2 text-lg md:text-xl font-semibold tracking-tight text-zinc-50">Talk to our team directly</h3>
-          <p className="mt-2 text-sm leading-relaxed text-zinc-300">
-            Get city-wise suggestions, latest availability, and the right plan for your budget.
-          </p>
-          <a
-            href={getWhatsAppLink("Hi Ghar+, please suggest the best hostel options for me.")}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 md:mt-5 inline-flex w-full justify-center rounded-xl bg-emerald-400 px-4 py-3 md:py-2.5 text-sm font-semibold text-zinc-950"
+        {/* Right Content - 3D Graphic & Floating Cards */}
+        <div className="relative h-[450px] md:h-[600px] lg:h-[700px] w-full flex items-center justify-center">
+          
+          {/* Main 3D Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative z-10 w-full h-full flex items-center justify-center"
           >
-            Start WhatsApp Inquiry
-          </a>
+            <img 
+              src="/hero-3d.png" 
+              alt="Abstract 3D architectural rendering" 
+              className="w-[90%] md:w-[85%] h-auto max-h-full object-contain drop-shadow-2xl mix-blend-multiply"
+            />
+          </motion.div>
+
+          {/* Floating Cards */}
+          <motion.div 
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute bottom-10 left-0 md:left-4 lg:-left-8 z-20 bg-white/80 backdrop-blur-md rounded-2xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col gap-2 w-48 border border-white/60"
+          >
+            <div className="w-8 h-8 rounded-full bg-[#E8EDE5] flex items-center justify-center text-[#2A3B32]">
+              <DollarSign size={16} />
+            </div>
+            <p className="font-semibold text-[#2A3B32]">Zero Brokerage</p>
+          </motion.div>
+
+          <motion.div 
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+            className="absolute bottom-24 right-[25%] z-20 bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col gap-2 w-40 border border-white/60"
+          >
+            <div className="w-8 h-8 rounded-full bg-[#E8EDE5] flex items-center justify-center text-[#2A3B32]">
+              <Heart size={16} />
+            </div>
+            <p className="font-semibold text-[#2A3B32]">Student First</p>
+          </motion.div>
+
+          <motion.div 
+            animate={{ y: [0, -12, 0] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+            className="absolute bottom-0 right-0 md:right-8 lg:-right-4 z-20 bg-white/85 backdrop-blur-md rounded-2xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col gap-2 w-56 border border-white/60"
+          >
+            <div className="w-8 h-8 rounded-full bg-[#E8EDE5] flex items-center justify-center text-[#2A3B32]">
+              <MessageCircle size={16} />
+            </div>
+            <p className="font-semibold text-[#2A3B32]">Instant WhatsApp Support</p>
+          </motion.div>
+
+          <motion.div 
+            animate={{ y: [0, -14, 0] }}
+            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+            className="absolute top-12 left-4 md:left-12 lg:left-0 z-20 bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col gap-2 w-44 border border-white/60"
+          >
+            <div className="w-8 h-8 rounded-full bg-[#E8EDE5] flex items-center justify-center text-[#2A3B32]">
+              <ShieldCheck size={16} />
+            </div>
+            <p className="font-semibold text-[#2A3B32]">Verified Properties</p>
+          </motion.div>
+
+          <motion.div 
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 2.1 }}
+            className="absolute top-24 right-0 md:right-4 lg:-right-8 z-20 bg-white/85 backdrop-blur-md rounded-2xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col gap-2 w-48 border border-white/60"
+          >
+            <div className="w-8 h-8 rounded-full bg-[#E8EDE5] flex items-center justify-center text-[#2A3B32]">
+              <Tag size={16} />
+            </div>
+            <p className="font-semibold text-[#2A3B32]">Best Rates Guaranteed</p>
+          </motion.div>
+
         </div>
-      </section>
+      </div>
     </div>
   );
 }

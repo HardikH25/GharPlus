@@ -14,7 +14,7 @@ function applyCloudinaryDelivery(url: string): string {
   return url.replace("/image/upload/", `/image/upload/${CLOUDINARY_DELIVERY}/`);
 }
 
-export function getCloudinaryUrl(publicId: string): string {
+function getCloudinaryUrl(publicId: string): string {
   const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
   const normalizedPublicId = publicId.trim().replace(/^\/+/, "");
 

@@ -9,7 +9,7 @@ type ImageGalleryProps = {
 };
 
 export default function ImageGallery({ images, title, type }: ImageGalleryProps) {
-  const safeImages = useMemo(() => (images.length > 0 ? images : [""]), [images]);
+  const safeImages = useMemo(() => (images.length > 0 ? images : [getFallbackImage()]), [images]);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const touchStartX = useRef(0);
@@ -38,18 +38,18 @@ export default function ImageGallery({ images, title, type }: ImageGalleryProps)
     <div className="flex flex-col gap-3">
       {/* Main Image */}
       <div
-        className="relative overflow-hidden rounded-2xl bg-zinc-950"
+        className="relative overflow-hidden rounded-2xl bg-white/50 backdrop-blur-sm border border-black/5"
         style={{ height: "420px" }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
         {/* Blurred background layer to fill gaps */}
-        <div 
+        <div
           className="absolute inset-0 z-0 bg-cover bg-center blur-2xl opacity-40 scale-110"
           style={{ backgroundImage: `url(${safeImages[activeIndex]})` }}
         />
-        
+
         <img
           src={safeImages[activeIndex]}
           alt={`${title} ${activeIndex + 1}`}
@@ -59,7 +59,7 @@ export default function ImageGallery({ images, title, type }: ImageGalleryProps)
 
         {/* Type pill */}
         {type && (
-          <span className="absolute top-3 right-3 z-10 rounded-md bg-accent-primary px-2.5 py-1 text-xs font-semibold text-white shadow">
+          <span className="absolute top-3 right-3 z-10 rounded-md bg-[#688A71] px-2.5 py-1 text-xs font-semibold text-white shadow">
             {type}
           </span>
         )}
@@ -93,10 +93,10 @@ export default function ImageGallery({ images, title, type }: ImageGalleryProps)
 
       {/* Thumbnails */}
       {safeImages.length > 1 && (
-        <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-3">
+        <div className="rounded-xl border border-black/5 bg-white shadow-sm p-3">
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-xs font-semibold text-zinc-300">All Photos</span>
-            <span className="text-xs text-zinc-500">{safeImages.length} items</span>
+            <span className="text-xs font-semibold text-[#2A3B32]">All Photos</span>
+            <span className="text-xs text-[#4A5D50]">{safeImages.length} items</span>
           </div>
           <div className="flex gap-2 overflow-x-auto pb-1">
             {safeImages.map((src, i) => (
@@ -104,9 +104,8 @@ export default function ImageGallery({ images, title, type }: ImageGalleryProps)
                 key={`${title}-t-${i}`}
                 type="button"
                 onClick={() => setActiveIndex(i)}
-                className={`relative flex-shrink-0 h-14 w-20 overflow-hidden rounded-lg border-2 transition-all ${
-                  i === activeIndex ? "border-accent-primary" : "border-transparent opacity-50 hover:opacity-80"
-                }`}
+                className={`relative flex-shrink-0 h-14 w-20 overflow-hidden rounded-lg border-2 transition-all ${i === activeIndex ? "border-[#688A71]" : "border-transparent opacity-50 hover:opacity-80"
+                  }`}
               >
                 <img
                   src={src}
