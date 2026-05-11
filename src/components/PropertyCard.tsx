@@ -41,8 +41,8 @@ export default function PropertyCard({ property }: PropertyCardProps) {
             }}
           />
           {/* Verified badge */}
-          <div className="absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full border border-[#688A71]/40 bg-white/90 px-2.5 py-1 text-xs font-medium text-[#688A71] backdrop-blur shadow-sm">
-            <ShieldCheck size={12} />
+          <div className="absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-[#2A3B32]/10 bg-[#E8EDE5]/95 px-2.5 py-1 text-xs font-bold text-[#2A3B32] backdrop-blur shadow-sm">
+            <ShieldCheck size={14} fill="#688A71" className="text-[#E8EDE5]" />
             Verified
           </div>
           {/* Category badge */}

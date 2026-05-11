@@ -17,7 +17,7 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
-      className="absolute inset-x-0 top-0 z-50 py-4 px-6 md:py-6 md:px-12"
+      className="absolute inset-x-0 top-0 z-50 py-6 px-6 md:py-8 md:px-12"
     >
       <nav className="mx-auto flex w-full max-w-[1400px] items-center justify-between">
         <Link to="/" onClick={() => setMobileOpen(false)} className="flex flex-col items-center gap-0">
@@ -30,7 +30,7 @@ export default function Navbar() {
                 "brightness(0) saturate(100%) invert(22%) sepia(15%) saturate(800%) hue-rotate(100deg) brightness(85%)",
             }}
           />
-          <span className="text-[0.50rem] tracking-[0.2em] uppercase text-[#4A5D50] font-medium whitespace-nowrap -mt-0.5">
+          <span className="text-[0.55rem] sm:text-[0.60rem] tracking-[0.2em] uppercase text-[#4A5D50] font-bold whitespace-nowrap -mt-0.5">
             | Apnapan Dusre Seher Me |
           </span>
         </Link>
