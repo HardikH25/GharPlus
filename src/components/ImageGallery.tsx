@@ -53,6 +53,8 @@ export default function ImageGallery({ images, title, type }: ImageGalleryProps)
         <img
           src={safeImages[activeIndex]}
           alt={`${title} ${activeIndex + 1}`}
+          width={800}
+          height={420}
           className="relative z-10 w-full h-full object-contain"
           onError={(e) => { e.currentTarget.src = getFallbackImage(); }}
         />
@@ -110,6 +112,9 @@ export default function ImageGallery({ images, title, type }: ImageGalleryProps)
                 <img
                   src={src}
                   alt={`thumb ${i + 1}`}
+                  width={80}
+                  height={56}
+                  loading="lazy"
                   className="h-full w-full object-cover"
                   onError={(e) => { e.currentTarget.src = getFallbackImage(); }}
                 />

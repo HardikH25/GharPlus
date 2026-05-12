@@ -15,24 +15,6 @@ const features = [
 export default function HomePage() {
   return (
     <div className="relative min-h-screen flex flex-col lg:flex-row lg:items-center justify-center pt-24 pb-12 overflow-hidden bg-[#E8EDE5]">
-
-      {/* ── Background decorative spheres (desktop only, they clip badly on mobile) ── */}
-      <motion.div
-        animate={{ y: [0, -25, 0], scale: [1, 1.1, 1], rotate: [0, 90, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="hidden lg:block absolute top-[15%] left-[45%] w-24 h-24 rounded-full bg-gradient-to-br from-white/80 to-[#A5C0AD]/50 shadow-xl backdrop-blur-sm z-0 blur-[1px]"
-      />
-      <motion.div
-        animate={{ y: [0, 30, 0], x: [0, -20, 0], scale: [1, 1.15, 1] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="hidden lg:block absolute bottom-1/4 right-[5%] w-40 h-40 rounded-full bg-gradient-to-tr from-[#688A71]/20 to-[#92B49D]/50 shadow-2xl backdrop-blur-sm z-0"
-      />
-      <motion.div
-        animate={{ y: [0, 20, 0], scale: [1, 0.9, 1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-        className="hidden lg:block absolute top-1/2 right-[45%] w-16 h-16 rounded-full bg-[#F4F7F2] shadow-[inset_0_-4px_6px_rgba(0,0,0,0.1),_0_8px_16px_rgba(0,0,0,0.1)] z-0"
-      />
-
       <div className="w-full max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-8 lg:gap-8 items-center relative z-10 px-6 md:px-12">
 
         {/* ── Left: Hero copy ── */}
@@ -77,7 +59,7 @@ export default function HomePage() {
               href={getWhatsAppLink("Hi Ghar+, I need help finding a premium hostel.")}
               target="_blank"
               rel="noreferrer"
-              className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-7 py-3.5 text-sm font-bold text-[#2A3B32] shadow-sm transition hover:bg-black/5 active:scale-95"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-7 py-3.5 text-sm font-bold text-[#2A3B32] shadow-sm transition hover:bg-black/5 active:scale-95"
             >
               {/* WhatsApp logo SVG */}
               <svg viewBox="0 0 24 24" fill="#25D366" className="h-5 w-5 flex-shrink-0" aria-hidden="true">
@@ -93,6 +75,7 @@ export default function HomePage() {
 
           {/* Main Photo Collage */}
           <div className="relative z-10 w-full h-full">
+
             {/* Main Tall Image */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -103,6 +86,8 @@ export default function HomePage() {
               <img
                 src="https://i.pinimg.com/736x/d3/88/d3/d388d390a2bffdee1e3cd63f51c9f645.jpg"
                 alt="Premium Room"
+                width={600}
+                height={800}
                 className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
               />
             </motion.div>
@@ -117,6 +102,9 @@ export default function HomePage() {
               <img
                 src="https://i.pinimg.com/736x/9d/47/b5/9d47b5c8fb6cc0036f20e9b7fb9137e3.jpg"
                 alt="Study Space"
+                width={500}
+                height={400}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
               />
             </motion.div>
@@ -131,6 +119,9 @@ export default function HomePage() {
               <img
                 src="https://cdn.shopify.com/s/files/1/0661/4217/5482/files/7_ways_to_decorate_a_rented_home_7.webp?v=1750771405"
                 alt="Modern Living"
+                width={500}
+                height={400}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
               />
             </motion.div>

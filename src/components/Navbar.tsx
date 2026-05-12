@@ -24,6 +24,8 @@ export default function Navbar() {
           <img
             src="/logo2.png"
             alt="Ghar+ Logo"
+            width={160}
+            height={64}
             className="h-12 md:h-14 lg:h-16 w-auto object-contain"
             style={{
               filter:

@@ -35,6 +35,9 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           <img
             src={thumbnail}
             alt={property.title}
+            width={400}
+            height={224}
+            loading="lazy"
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             onError={(e) => {
               e.currentTarget.src = getFallbackImage();
