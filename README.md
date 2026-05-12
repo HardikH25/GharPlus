@@ -1,6 +1,6 @@
 # GharPlus
 
-GharPlus is a modern, premium real estate and property platform designed to simplify property discovery and services. Built with React and optimized for a seamless user experience, it features dynamic UI elements, responsive design, and real-time data integration.
+GharPlus is a modern, premium property platform designed mainly for hostel and college students to simplify finding their ideal accommodation. Built with React and optimized for a seamless user experience, it features dynamic UI elements, responsive design, and real-time data integration.
 
 ## 🚀 Tech Stack
 
